@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r load packages, include = FALSE}
+library(tidyr)
 library(ggplot2)
 library(plotly)
 ```
@@ -28,7 +29,8 @@ p <- ggplot(diamonds, aes(carat, price, color = clarity)) +
     scale_color_brewer(palette = "PiYG", 
                        guide = guide_legend(title = "Clarity", reverse = TRUE, override.aes = list(size = 2)))
 
-(gg <- ggplotly(p))
+(gg <- ggplotly(p)) %>%
+    partial_bundle()
 
 ```
 
